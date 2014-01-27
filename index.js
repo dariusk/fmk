@@ -147,10 +147,13 @@ function tally() {
           return el;}).pairs().filter(function(el) {
              return el[1] !== 1; }).value();
         if (repeat.length > 0) {
-          repeat = repeat[0][0];
-          var missing = _.difference([0,1,2],winnerIndices);
+          repeat = +repeat[0][0];
+          var missing = _.difference([0,1,2],winnerIndices)[0];
           // replace repeat with missing
           winnerIndices[winnerIndices.indexOf(repeat)] = missing;
+          killWinner = winnerIndices[0];
+          fuckWinner = winnerIndices[1];
+          marryWinner = winnerIndices[2];
         }
 
         console.log('k',killWinner,'m',marryWinner,'f',fuckWinner);
